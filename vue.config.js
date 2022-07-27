@@ -1,32 +1,23 @@
 'use strict';
 const path = require('path');
 
-function resolve(dir) {
+const isProduction = process.env.NODE_ENV === 'production';
+const resolve = function (dir) {
   return path.join(__dirname, dir);
+};
+
+if (isProduction) {
+  require('./config/update-version');
 }
 
-//const name = 'test' // page title
-// If your port is set to 80,
-// use administrator privileges to execute the command line.
-// For example, Mac: sudo npm run
-const port = 9528; // dev port
-
-// All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-  /**
-   * You will need to set publicPath if you plan to deploy your site under a sub path,
-   * for example GitHub Pages. If you plan to deploy your site to https://foo.github.io/bar/,
-   * then publicPath should be set to "/bar/".
-   * In most cases please use '/' !!!
-   * Detail: https://cli.vuejs.org/config/#publicpath
-   */
   publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
-    port: port,
+    port: 9528,
     open: true,
     overlay: {
       warnings: false,
@@ -35,9 +26,6 @@ module.exports = {
     proxy: null,
   },
   configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    // name: name,
     resolve: {
       alias: {
         '@': resolve('src'),
@@ -52,8 +40,8 @@ module.exports = {
     // },
   },
   chainWebpack(config) {
-    config.plugins.delete('preload'); // TODO: need test
-    config.plugins.delete('prefetch'); // TODO: need test
+    config.plugins.delete('preload');
+    config.plugins.delete('prefetch');
     // config
     //   // 插件名
     //   .plugin('extract-css')
@@ -87,9 +75,7 @@ module.exports = {
       })
       .end();
 
-    config
-      // https://webpack.js.org/configuration/devtool/#development
-      .when(process.env.NODE_ENV === 'development', config => config.devtool('cheap-source-map'));
+    config.when(process.env.NODE_ENV === 'development', config => config.devtool('cheap-source-map'));
 
     // config
     //   .when(process.env.NODE_ENV !== 'development',
@@ -129,5 +115,12 @@ module.exports = {
     //       config.optimization.runtimeChunk('single')
     //     }
     //   )
+  },
+  pluginOptions: {
+    // 配置全局样式
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: ['F:\\VSCodeProjects\\MySource\\vue2-g6-editor\\src\\styles\\index.scss'],
+    },
   },
 };

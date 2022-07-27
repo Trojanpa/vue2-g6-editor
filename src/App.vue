@@ -1,14 +1,12 @@
 <template>
   <div id="app">
-    <G6Editor mode="edit"> </G6Editor>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import G6Editor from './components/G6Editor';
 export default {
-  name: 'app',
-  components: { G6Editor },
+  name: 'App',
 };
 </script>
 

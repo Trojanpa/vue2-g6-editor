@@ -1,0 +1,136 @@
+/**
+* 重置浏览器样式
+*/
+* {
+  box-sizing: border-box;
+  scrollbar-color: #873BF4 rgb(239, 239, 239);
+  scrollbar-width: thin;
+}
+
+body {
+  font-size: 14px;
+  color: #666;
+  background: #fff;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none
+}
+
+a:hover {
+  color: #666;
+  cursor: pointer;
+}
+
+a,
+address,
+b,
+big,
+blockquote,
+body,
+center,
+cite,
+code,
+dd,
+del,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+i,
+iframe,
+img,
+ins,
+label,
+legend,
+li,
+ol,
+p,
+pre,
+small,
+span,
+strong,
+u,
+ul,
+var {
+  margin: 0;
+  padding: 0
+}
+
+ol,
+ul,
+li {
+  list-style: none
+}
+
+img {
+  border: 0;
+  vertical-align: middle
+}
+
+em,
+i,
+u {
+  font-style: normal
+}
+
+td,
+th {
+  height: 50px !important;
+}
+
+/* 重置滚动条样式 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: rgb(239, 239, 239);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #873BF4;
+  border-radius: 10px;
+  background-image: -webkit-linear-gradient(0deg,
+      rgba(255, 255, 255, 0.5) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.5) 75%,
+      transparent 75%,
+      transparent)
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background-color: #873BF4;
+  border-radius: 10px;
+  background-image: -webkit-linear-gradient(90deg,
+      rgba(255, 255, 255, 0.5) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.5) 75%,
+      transparent 75%,
+      transparent)
+}
+
+::-webkit-scrollbar-corner {
+  background: #ebeef5;
+}
