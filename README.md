@@ -6,6 +6,8 @@ AntV G6官方文档：https://g6.antv.vision/zh/docs/manual/getting-started
 ## 安装依赖
 ```
 npm install
+or
+npm i
 ```
 
 ## 运行
