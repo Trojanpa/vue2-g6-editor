@@ -1,4 +1,4 @@
-import G6 from '@antv/g6/build/g6';
+import G6 from '@antv/g6';
 import hoverNode from './hover-node';
 import addLine from './add-edge';
 import dragItem from './drag-item';

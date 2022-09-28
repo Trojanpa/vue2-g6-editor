@@ -1,4 +1,4 @@
-import G6 from '@antv/g6/build/g6';
+import G6 from '@antv/g6';
 import { uniqueId } from '@/utils';
 const MIN_ARROW_SIZE = 3;
 

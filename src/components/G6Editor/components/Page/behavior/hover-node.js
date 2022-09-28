@@ -11,8 +11,10 @@ export default {
     const item = e.item;
     const graph = self.graph;
     const group = item.getContainer();
-    if (e.target._attrs.isOutPointOut || e.target._attrs.isOutPoint) {
+    if (e.target.attrs.isOutPointOut || e.target.attrs.isOutPoint) {
       group.find(g => {
+        console.log('group');
+        console.log(group);
         if (g._attrs.isInPoint || g._attrs.isOutPoint) {
           g.attr('fill', '#fff');
         }
@@ -49,7 +51,7 @@ export default {
     const graph = self.graph;
     const group = item.getContainer();
     group.find(g => {
-      if (g._attrs.isInPoint || g._attrs.isOutPoint) {
+      if (g.attrs.isInPoint || g.attrs.isOutPoint) {
         g.attr('fill', '#fff');
       }
     });
@@ -59,7 +61,7 @@ export default {
     graph.paint();
   },
   onMousedown(e) {
-    if (e.target._attrs.isOutPoint || e.target._attrs.isOutPointOut) {
+    if (e.target.attrs.isOutPoint || e.target.attrs.isOutPointOut) {
       this.graph.setMode('addEdge');
     } else {
       this.graph.setMode('moveNode');

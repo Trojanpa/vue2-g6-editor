@@ -1,9 +1,15 @@
-import G6 from '@antv/g6/build/g6';
+import G6 from '@antv/g6';
 import { uniqueId } from '@/utils';
-import Shape from '@antv/g/src/shapes';
+
 const customNode = {
   init() {
     G6.registerNode('customNode', {
+      /**
+       * 绘制节点，包含文本
+       * @param  {Object} cfg 节点的配置项
+       * @param  {G.Group} group 图形分组，节点中的图形对象的容器
+       * @return {G.Shape} 绘制的图形，通过 node.get('keyShape') 可以获取到
+       */
       draw(cfg, group) {
         let size = cfg.size;
         if (!size) {
@@ -25,7 +31,7 @@ const customNode = {
             width: width,
             height: height,
             stroke: '#ced4d9',
-            fill: '#fff', //此处必须有fill 不然不能触发事件
+            fill: '#fff', // 此处必须有fill 不然不能触发事件
             radius: 4,
           },
         });
@@ -61,7 +67,7 @@ const customNode = {
           },
         });
         if (cfg.backImage) {
-          const clip = new Shape.Rect({
+          const clip = new G6.Shape.Rect({
             attrs: {
               x: offsetX,
               y: offsetY,

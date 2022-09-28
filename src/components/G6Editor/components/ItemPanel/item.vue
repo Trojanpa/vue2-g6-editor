@@ -21,6 +21,7 @@
 import eventBus from '@/utils/eventBus';
 import okSvg from '@/assets/icons/ok.svg';
 import bgImg from '@/assets/bg.jpg';
+import { cloneDeep } from '@/utils';
 export default {
   data() {
     return {
@@ -133,7 +134,7 @@ export default {
     },
     handleDragEnd(e, item) {
       let data = {};
-      Object.assign(data, item);
+      data = cloneDeep(item);
       data.offsetX = this.offsetX;
       data.offsetY = this.offsetY;
       if (this.page) {
@@ -143,7 +144,8 @@ export default {
         data.x = xy.x;
         data.y = xy.y;
         data.size = item.size.split('*');
-        data.type = 'node';
+        // data.type = 'node';
+        console.log(data);
         this.command.executeCommand('add', [data]);
       }
     },

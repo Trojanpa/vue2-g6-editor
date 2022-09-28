@@ -15,7 +15,7 @@ export default {
   getDefaultCfg() {
     return {
       updateEdge: true,
-      delegate: true,
+      // delegate: true,
       delegateStyle: {},
     };
   },
@@ -24,11 +24,20 @@ export default {
       'node:mousedown': 'onMousedown',
       mousemove: 'onMousemove',
       mouseup: 'onMouseup',
-      // 'node:dragstart': 'onDragStart',
-      // 'node:drag': 'onDrag',
-      // 'node:dragend': 'onDragEnd',
+      'node:dragstart': 'onDragStart',
+      'node:drag': 'onDrag',
+      'node:dragend': 'onDragEnd',
       'canvas:mouseleave': 'onOutOfRange',
     };
+  },
+  onDragStart(e) {
+    console.log('开始拖动', e);
+  },
+  onDrag(e) {
+    console.log('拖动中', e);
+  },
+  onDragEnd(e) {
+    console.log('拖动结束', e);
   },
   getNode(e) {
     if (!this.shouldBegin.call(this, e)) {
@@ -37,6 +46,7 @@ export default {
     this.isDrag = true;
     this.nodeEvent = e;
     const { item } = e;
+    if (!item) return;
     const graph = this.graph;
 
     this.targets = [];
@@ -74,7 +84,11 @@ export default {
     this.point = {};
     this.originPoint = {};
   },
+  onMousedown(e) {
+    console.log('鼠标按下', e);
+  },
   onMousemove(e) {
+    console.log('鼠标移动', e);
     if (!this.origin) {
       this.getNode(e);
     }
@@ -93,6 +107,7 @@ export default {
     }
   },
   onMouseup(e) {
+    console.log('鼠标放开', e);
     if (this.shape) {
       this.shape.remove();
       this.shape = null;
@@ -159,6 +174,7 @@ export default {
     }
   },
   _update(item, e, nodeEvent, force) {
+    if (!item) return;
     const origin = this.origin;
     const model = item.get('model');
     const nodeId = item.get('id');

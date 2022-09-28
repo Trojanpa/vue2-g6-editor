@@ -1,4 +1,4 @@
-import G6 from '@antv/g6/build/g6';
+import G6 from '@antv/g6';
 import { uniqueId } from '@/utils';
 // import openSvg from '@/assets/icons/open.svg';
 import closeSvg from '@/assets/icons/close.svg';

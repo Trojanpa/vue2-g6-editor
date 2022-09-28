@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Minimap from '@antv/g6/build/minimap';
+import G6 from '@antv/g6';
 import eventBus from '@/utils/eventBus';
 export default {
   data() {
@@ -34,7 +34,7 @@ export default {
       const cfgs = {
         container: 'minimap',
       };
-      this.minimap = new Minimap({ ...cfgs });
+      this.minimap = new G6.Minimap({ ...cfgs });
     },
     bindEvent() {
       eventBus.$on('afterAddPage', page => {

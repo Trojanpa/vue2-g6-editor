@@ -75,7 +75,7 @@ module.exports = {
       })
       .end();
 
-    config.when(process.env.NODE_ENV === 'development', config => config.devtool('cheap-source-map'));
+    config.when(process.env.NODE_ENV === 'development', config => config.devtool('cheap-module-source-map'));
 
     // config
     //   .when(process.env.NODE_ENV !== 'development',

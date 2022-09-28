@@ -33,7 +33,9 @@ export default {
       });
       eventBus.$on('mousedown', () => {
         const menu = this.$refs.contextMenu;
-        menu.style.display = 'none';
+        if (menu) {
+          menu.style.display = 'none';
+        }
       });
     },
     handleClick(item) {

@@ -22,13 +22,13 @@ export default class Editor {
     }
   }
   add(type, item) {
-    this.graph.add(type, item);
+    this.graph.addItem(type, item);
   }
   update(item, model) {
-    this.graph.update(item, model);
+    this.graph.updateItem(item, model);
   }
   remove(item) {
     const node = this.graph.findById(item.id);
-    this.graph.remove(node);
+    this.graph.removeItem(node);
   }
 }

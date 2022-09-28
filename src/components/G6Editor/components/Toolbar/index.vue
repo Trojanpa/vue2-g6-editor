@@ -71,7 +71,7 @@
 
 <script>
 import eventBus from '@/utils/eventBus';
-import Util from '@antv/g6/src/util';
+import G6 from '@antv/g6';
 import { uniqueId, getBox } from '@/utils';
 export default {
   data() {
@@ -155,7 +155,7 @@ export default {
       }
     },
     getFormatPadding() {
-      return Util.formatPadding(this.graph.get('fitViewPadding'));
+      return G6.Util.formatPadding(this.graph.get('fitViewPadding'));
     },
     getViewCenter() {
       const padding = this.getFormatPadding();

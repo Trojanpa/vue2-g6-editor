@@ -1,4 +1,4 @@
-import Util from '@antv/g6/src/util';
+import { each } from '@antv/util';
 import eventBus from '@/utils/eventBus';
 import { uniqueId, getBox } from '@/utils';
 import config from '@/global';
@@ -42,8 +42,8 @@ export default {
   },
   onMousemove(e) {
     if (this.shape) {
-      const width = e.x - this.shape._attrs.x;
-      const height = e.y - this.shape._attrs.y;
+      const width = e.x - this.shape.attrs.x;
+      const height = e.y - this.shape.attrs.y;
       this.shape.attr({
         width,
         height,
@@ -55,7 +55,7 @@ export default {
     const canvas = document.getElementById('graph-container').children[0];
     canvas.style.cursor = 'default';
     const selected = this.graph.findAllByState('node', 'selected');
-    Util.each(selected, node => {
+    each(selected, node => {
       this.graph.setItemState(node, 'selected', false);
       eventBus.$emit('nodeselectchange', { target: node, select: false });
     });
@@ -69,7 +69,8 @@ export default {
     this.graph.setMode('default');
   },
   addTeam() {
-    const { x, y, width, height } = this.shape._attrs;
+    console.log(this.shape);
+    const { x, y, width, height } = this.shape.attrs;
     const { x1, y1, x2, y2 } = getBox(x, y, width, height);
     this.graph.findAll('node', node => {
       const { x: nodeX, y: nodeY, width: nodeWidth, height: nodeHeight } = node.getBBox();

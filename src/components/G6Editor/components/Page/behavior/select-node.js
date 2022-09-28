@@ -1,4 +1,4 @@
-import Util from '@antv/g6/src/util';
+import { each } from '@antv/util';
 import eventBus from '@/utils/eventBus';
 export default {
   getDefaultCfg() {
@@ -23,12 +23,12 @@ export default {
     const autoPaint = graph.get('autoPaint');
     graph.setAutoPaint(false);
     const selectedEdges = graph.findAllByState('edge', 'selected');
-    Util.each(selectedEdges, edge => {
+    each(selectedEdges, edge => {
       graph.setItemState(edge, 'selected', false);
     });
     if (!self.keydown || !self.multiple) {
       const selected = graph.findAllByState('node', 'selected');
-      Util.each(selected, node => {
+      each(selected, node => {
         if (node !== item) {
           graph.setItemState(node, 'selected', false);
         }
@@ -54,13 +54,13 @@ export default {
     const autoPaint = graph.get('autoPaint');
     graph.setAutoPaint(false);
     const selected = graph.findAllByState('node', 'selected');
-    Util.each(selected, node => {
+    each(selected, node => {
       graph.setItemState(node, 'selected', false);
       eventBus.$emit('nodeselectchange', { target: node, select: false });
     });
 
     const selectedEdges = graph.findAllByState('edge', 'selected');
-    Util.each(selectedEdges, edge => {
+    each(selectedEdges, edge => {
       graph.setItemState(edge, 'selected', false);
       eventBus.$emit('nodeselectchange', { target: edge, select: false });
     });

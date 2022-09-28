@@ -1,4 +1,4 @@
-import Util from '@antv/g6/src/util';
+import { each } from '@antv/util';
 import eventBus from '@/utils/eventBus';
 export default {
   getEvents() {
@@ -43,12 +43,12 @@ export default {
     const autoPaint = graph.get('autoPaint');
     graph.setAutoPaint(false);
     const selectedNodes = graph.findAllByState('node', 'selected');
-    Util.each(selectedNodes, node => {
+    each(selectedNodes, node => {
       graph.setItemState(node, 'selected', false);
     });
     if (!self.keydown || !self.multiple) {
       const selected = graph.findAllByState('edge', 'selected');
-      Util.each(selected, edge => {
+      each(selected, edge => {
         if (edge !== item) {
           graph.setItemState(edge, 'selected', false);
         }

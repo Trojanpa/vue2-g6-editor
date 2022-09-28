@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 import pick from 'lodash/pick';
 import uniqueId from 'lodash/uniqueId';
+import cloneDeep from 'lodash/cloneDeep';
 import upperFirst from 'lodash/upperFirst';
 
 const toQueryString = obj =>
@@ -25,4 +26,4 @@ const getBox = (x, y, width, height) => {
   };
 };
 
-export { merge, pick, toQueryString, uniqueId, upperFirst, addListener, getBox };
+export { merge, pick, toQueryString, uniqueId, upperFirst, addListener, getBox, cloneDeep };
